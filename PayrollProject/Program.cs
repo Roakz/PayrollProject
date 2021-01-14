@@ -78,5 +78,22 @@ namespace PayrollProject
         managerHourlyRate in as the expected rate parameter.This will satisfy the Staff classes constructor parameter requirements.*
         and ensure that the managers hourly rate is used for the calculate pay function.*/
         public Manager(string name) : base(name, managerHourlyRate) { }
+
+        //Overriding the Bases Calculate pay method to include a potential manager allowance.
+        public override void CalculatePay()
+        {
+            base.CalculatePay();
+            Allowance = 1000;
+            if(HoursWorked > 160)
+            {
+                TotalPay += Allowance;
+            }
+        }
+
+        // Overriding the ToString method to include the allowance amount.
+        public override string ToString()
+        {
+            return base.ToString() + $", Allowance: {Allowance}";
+        }
     }
 }
