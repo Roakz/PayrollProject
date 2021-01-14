@@ -2,26 +2,86 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PayrollProject
 {
     class Program
-    {
+    { 
         static void Main(string[] args)
         {
+            List<Staff> myStaff = new List<Staff>();
+            FileReader fr = new FileReader();
+            int month = 0, year = 0;
+
+            while(year == 0)
+            {
+                Console.WriteLine("\n Please enter the year:");
+            
+                try
+                {
+                  
+                    year = Convert.ToInt32(Console.ReadLine());
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine(e.Message + "Please try again.");
+                }
+            }
+
+            while(month == 0)
+            {
+                Console.WriteLine("Please enter the month:");
+
+               try
+               {
+                  month = Convert.ToInt32(Console.ReadLine());   
+                  
+                    if(month < 1 || month > 12)
+                    {
+                        Console.WriteLine("Please choose a number from 1 to 12, Try again!:");
+
+                        month = 0;
+                    }
+               }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message + "Please try again!");
+                }
+            }
+
+            myStaff = fr.ReadFile();
+
+            for (int i = 0;i< myStaff.Count; i++)
+            {
+                try
+                {
+                    Console.WriteLine("\nEnter hours worked for {0}:", myStaff[i].NameOfStaff);
+                    myStaff[i].HoursWorked = Convert.ToInt32(Console.ReadLine());
+                    myStaff[i].CalculatePay();
+                    Console.WriteLine(myStaff[i].ToString());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    i--;
+                }
+            }
+
+            PaySlip ps = new PaySlip(month, year);
+            ps.GeneratePaySlip(myStaff);
+            ps.GenerateSummary(myStaff);
+
+            Console.Read();
+
         }
     }
 
-    //This is a class
     class Staff
     {
-        // Fields
+   
         private float hourlyRate;
         private int hWorked;
 
-        // Manual property
         public int HoursWorked
         {
             get
@@ -30,7 +90,7 @@ namespace PayrollProject
             }
             set
             {
-                if(hWorked > 0)
+                if(value > 0)
                 {
                     hWorked = value;
                 }
@@ -41,19 +101,16 @@ namespace PayrollProject
             }
         }
 
-        // Auto implemeted properties
         public float TotalPay { get; protected set; }
         public float BasicPay {get; private set; }
         public string NameOfStaff { get; private set; }
 
-        //Constructor
         public Staff(string name, float rate)
         {
             NameOfStaff = name;
             hourlyRate = rate;
         }
 
-        //Public virtual method with void return value
         public virtual void CalculatePay()
         {
             Console.WriteLine("Calculating Pay...");
@@ -61,7 +118,6 @@ namespace PayrollProject
             TotalPay = BasicPay;
         }
 
-        //ToString method override.
         public override string ToString()
         {
             return $"NameOfStaff: {NameOfStaff}, BasicPay: {BasicPay}, TotalPay: {TotalPay}, hWorked: {hWorked}, hourlyRate: {hourlyRate}";
@@ -69,18 +125,12 @@ namespace PayrollProject
 
     }
 
-    // This class inherits from the staff class above. 
     class Manager : Staff
     {
         private const float managerHourlyRate = 50;
         public int Allowance { get; private set; }
-
-        /* The constructor accepts its own parameter name but passes the 
-        managerHourlyRate in as the expected rate parameter.This will satisfy the Staff classes constructor parameter requirements.*
-        and ensure that the managers hourly rate is used for the calculate pay function.*/
         public Manager(string name) : base(name, managerHourlyRate) { }
 
-        //Overriding the Bases Calculate pay method to include a potential manager allowance.
         public override void CalculatePay()
         {
             base.CalculatePay();
@@ -91,15 +141,12 @@ namespace PayrollProject
             }
         }
 
-        // Overriding the ToString method to include the allowance amount.
         public override string ToString()
         {
             return base.ToString() + $", Allowance: {Allowance}";
         }
     }
 
-    /*The admin class also inherits from the Staff class and has  the additional fields of overtimeRate and adminHourlyRate.
-      The Calculate pay method overrides the base again using these fields to calculate an admins pay.*/
     class Admin : Staff
     {
         private const float overtimeRate = 15.5f;
@@ -125,10 +172,6 @@ namespace PayrollProject
         }
 
     }
-
-    /* The file reader class reads the staff.txt file in the debug directory. If it exists we read each line and split it.
-       If the staff is a Manager create a manager object and add it to the myStaff list otherwise add an admin object.
-       If the file doesnt exist then output a message to the console. Return the list either way.*/
 
     class FileReader
     {
@@ -190,12 +233,13 @@ namespace PayrollProject
                 path = f.NameOfStaff + ".txt";
 
                 StreamWriter sw = new StreamWriter(path);
-                sw.WriteLine("PAYSLIP FOR {0}{1}", (MonthsOfYear)month, year);
+                sw.WriteLine("PAYSLIP FOR {0} / {1}", (MonthsOfYear)month, year);
                 sw.WriteLine("==================================");
                 sw.WriteLine("Name of Staff: {0}", f.NameOfStaff);
                 sw.WriteLine("Hours Worked: {0}", f.HoursWorked);
                 sw.WriteLine("Basic Pay: {0:C}", f.BasicPay);
 
+              
                 if (f.GetType() == typeof(Manager))
                 {
                     sw.WriteLine("Allowance: {0}", ((Manager)f).Allowance);
@@ -214,7 +258,6 @@ namespace PayrollProject
             }
         }
 
-        // LINQ Query
         public void GenerateSummary(List<Staff> myStaff)
         {
             var result = from staff in myStaff where staff.HoursWorked < 10 orderby staff.NameOfStaff ascending
@@ -230,8 +273,9 @@ namespace PayrollProject
                 {
                     sw.WriteLine("Name of staff: {0}, Hours Worked: {1}", res.NameOfStaff, res.HoursWorked);
 
-                    sw.Close();
                 }
+
+                sw.Close();
             }
         }
 
