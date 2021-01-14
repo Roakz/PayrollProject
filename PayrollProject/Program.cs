@@ -214,9 +214,30 @@ namespace PayrollProject
             }
         }
 
-        public void GenerateSummary()
+        // LINQ Query
+        public void GenerateSummary(List<Staff> myStaff)
         {
+            var result = from staff in myStaff where staff.HoursWorked < 10 orderby staff.NameOfStaff ascending
+                         select new { staff.NameOfStaff,staff.HoursWorked};
 
+            string path = "summary.txt";
+            using (StreamWriter sw = new StreamWriter(path))
+            {
+                sw.WriteLine("Staff with less than 10 working hours");
+                sw.WriteLine("");
+
+                foreach(var res in result)
+                {
+                    sw.WriteLine("Name of staff: {0}, Hours Worked: {1}", res.NameOfStaff, res.HoursWorked);
+
+                    sw.Close();
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return "month = " + month + ", year = " + year;
         }
     }
 }
