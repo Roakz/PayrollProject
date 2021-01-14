@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -97,8 +98,8 @@ namespace PayrollProject
         }
     }
 
-    //The admin class also inherits from the Staff class and has  the additional fields of overtimeRate and adminHourlyRate.
-    //The Calculate pay method overrides the base again using these fields to calculate an admins pay.
+    /*The admin class also inherits from the Staff class and has  the additional fields of overtimeRate and adminHourlyRate.
+      The Calculate pay method overrides the base again using these fields to calculate an admins pay.*/
     class Admin : Staff
     {
         private const float overtimeRate = 15.5f;
@@ -123,5 +124,47 @@ namespace PayrollProject
             return base.ToString() + $", Overtime: {Overtime}";
         }
 
+    }
+
+    /* The file reader class reads the staff.txt file in the debug directory. If it exists we read each line and split it.
+       if the staff is a Manager create a manager object and add it to the myStaff list otherwsie add an admin object.
+       If the file doesnt exist then output a message to the console. Return the list either way.*/
+
+    class FileReader
+    {
+        public List<Staff> ReadFile()
+        {
+            List<Staff> myStaff = new List<Staff>();
+            string[] result = new string[2];
+            string path = "staff.txt";
+            string[] seperator = { "," };
+
+            if (File.Exists(path))
+            {
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    while(sr.EndOfStream != true)
+                    {
+                       result = sr.ReadLine().Split(seperator, StringSplitOptions.None);
+                       if(result[1] == "Manager")
+                        {
+                            myStaff.Add(new Manager(result[0]));
+                        }
+                        else
+                        {
+                            myStaff.Add(new Admin(result[0]));
+                        }
+                    }
+                    sr.Close();
+                }
+                
+            }
+            else
+            {
+                Console.WriteLine("File does not exist please rectify!.");
+            }
+
+            return myStaff;
+        }
     }
 }
