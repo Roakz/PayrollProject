@@ -127,7 +127,7 @@ namespace PayrollProject
     }
 
     /* The file reader class reads the staff.txt file in the debug directory. If it exists we read each line and split it.
-       if the staff is a Manager create a manager object and add it to the myStaff list otherwsie add an admin object.
+       If the staff is a Manager create a manager object and add it to the myStaff list otherwise add an admin object.
        If the file doesnt exist then output a message to the console. Return the list either way.*/
 
     class FileReader
@@ -165,6 +165,58 @@ namespace PayrollProject
             }
 
             return myStaff;
+        }
+    }
+
+    class PaySlip
+    {
+        private int month;
+        private int year;
+
+        enum MonthsOfYear { JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC }
+
+        public PaySlip(int payMonth, int payYear)
+        {
+            month = payMonth;
+            year = payYear;
+        }
+
+        public void GeneratePaySlip(List<Staff> myStaff)
+        {
+            string path;
+
+            foreach (Staff f in myStaff)
+            {
+                path = f.NameOfStaff + ".txt";
+
+                StreamWriter sw = new StreamWriter(path);
+                sw.WriteLine("PAYSLIP FOR {0}{1}", (MonthsOfYear)month, year);
+                sw.WriteLine("==================================");
+                sw.WriteLine("Name of Staff: {0}", f.NameOfStaff);
+                sw.WriteLine("Hours Worked: {0}", f.HoursWorked);
+                sw.WriteLine("Basic Pay: {0:C}", f.BasicPay);
+
+                if (f.GetType() == typeof(Manager))
+                {
+                    sw.WriteLine("Allowance: {0}", ((Manager)f).Allowance);
+                }
+                else if (f.GetType() == typeof(Admin))
+                {
+                    sw.WriteLine("Overtime:{0}", ((Admin)f).Overtime);
+                }
+
+                sw.WriteLine("");
+                sw.WriteLine("==================================");
+                sw.WriteLine("Total Pay: {0}:", f.TotalPay);
+                sw.WriteLine("==================================");
+
+                sw.Close();
+            }
+        }
+
+        public void GenerateSummary()
+        {
+
         }
     }
 }
