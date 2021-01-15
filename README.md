@@ -43,6 +43,8 @@ Demonstrated Principles
 - Abstract Classes
 - structs
 - Switches
+- Multithreading and Async
+- All the other things
 
 <h3> Object Orientated Programming </h3>
 
@@ -123,9 +125,42 @@ C# Gives us the try, catch, finally block to help with error handling. You can s
 
 <h3> LINQ </h3>
 
-LINQ stands for Language-Integrated Query. It is a syntax provided that allows us to query data in our program. I have provided an example of this in my code on line 263. It has an SQL...ish like syntax for ease of querying and arranging data. In my code you can see that it can be assigned to a variable and formatted in a certain way. We can then manipulate this data to our liking i.e line 272-276.
+LINQ stands for Language-Integrated Query. It is a syntax provided that allows us to query data in our program. I have provided an example of this in my code... simple as it may be... on line 263. It has an SQL...ish like syntax for ease of querying and arranging data. In my code you can see that it can be assigned to a variable and formatted in a certain way. We can then manipulate this data to our liking i.e line 272-276.
 
+<h3> File Handling </h3>
 
+C# Provides a number of classes to work with files. The systemIO Namespace is where you will find them. As you cna see on line 3 we have used a Directive to include the System.io namespace in our application. This allows us to use the classes within it. The 2 classes that have been used in my code are StreamReader, for reading files i.e line 176 defines the FileReader class on line 187 we create an instance of the StreanReader class, and StreamWriter in the GeneratePaySlip function at line 235.
+
+<h3> Classes </h3>
+
+Classes in C# are not unlike classes from any other object orientated language. But essentially, as we may or may not know, classes are templates for creating objects. Classes contain members including fields, properties constructors and methods that all have differnt levels of access control to define where and how they can be used. They are essentially the blueprint for all object created in C# (and other object oriented languages). They are one of if not the most important concepts in object orientated programming.
+
+see examples on lines 8, 79, 128, 150, 176 and 214.
+
+<h3> Access Modifiers </h3>
+
+Although I have already touched on access modifiers. Lets do it again...YAY!
+
+Access modifiers are used in c# programming to define the access level of members. What is meant by members is any contained field, method or property of a containing class. There are 3 main access modifiers used (although not only 3) in C#. Public, private and protected. These are prepended to a statment. You can see examples of this in the code all over the place. Here are what each level implies.
+
+Public: Accessable from anywhere. No restrictions. Take me!
+Private: Only accessable from within the containing class. This is the default if nothing is specified.
+Protected: Accessable only from within the containing class and any child classes.
+
+<h3> Overriding / Overloading </h3>
+
+<h3> Inheritance </h3>
+
+<h3> Polymorphism </h3>
+
+**Disclaimer** The following Sections are being included to demonstrate my knowledge. But there are no examples in my code.
+
+<h3> Interfaces </h3>
+<h3> Abstract Classes </h3>
+<h3> Structs </h3>
+<h3> Switches </h3>
+<h3> Multithreading and Async </h3>
+<h3> All the other things </h3>
 
 <a name="install"/>
 <h2>Install</h2>
