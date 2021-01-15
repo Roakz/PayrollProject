@@ -3,7 +3,6 @@
 **Contents**
 - [Project Overview](#project-overview)
 - [Principles Implemented and not Implemented](#principles)
-- [Install the App](#install)
 
 <a name="project-overview"/>
 <h2>Project Overview</h2>
@@ -194,8 +193,3 @@ This was a fantastic Learning Venture and I have thoroughly enjoyed consolidatin
 This covers nost of the basic concpets and ois a great little intro into C#.
 
 Happy coding!!
-
-<a name="install"/>
-<h2>Install</h2>
-
-
