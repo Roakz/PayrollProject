@@ -34,7 +34,6 @@ Demonstrated Principles
 - File Handling
 - Classes
 - Access Modifiers
-- Overriding / Overloading
 - Inheritence
 - Polymorphism
 
@@ -147,11 +146,30 @@ Public: Accessable from anywhere. No restrictions. Take me!
 Private: Only accessable from within the containing class. This is the default if nothing is specified.
 Protected: Accessable only from within the containing class and any child classes.
 
-<h3> Overriding / Overloading </h3>
-
 <h3> Inheritance </h3>
 
+Inheritance in C# and infact all object orientated programming is simply put:
+
+Creating a new class from an existing class so that we can reuse code. The created class... or the child class... Is the inheriting class. The original class or the Parent or Base class... is the inherited class.....sigh...breath.
+
+In C# we can implement class inheritance using a colon : symbol. See examples of this in the code at line 128 and 150. The child class will have access to any members of the parent class that are not private. Generally the parent constructor will be called first. We have to pass the parent its required parameters using the following syntax in the constructor declaration. See this in action on line 132.
+
+```c#
+public Manager(string name) : base(name, managerHourlyRate) { }
+```
+All this is doing is allowing the constructor of the child class to accept a paramter of its own. Then a colon is used followed by the base keyword. We use parantheses to pass up the required params. Also worth noting is that the parameter that the child class accepted is passed through the base keyword. This isnt required but possible. This particular constructor did not contain any additinal logic, The logic contained in the parent construtor is sufficient. But it was required so that the parameters could be passed.
+
 <h3> Polymorphism </h3>
+
+Polymorphism is defined as the ability to take on many forms. In programming and indeed in C# this concept is important to understand for instances demonstrated on lines 245 andn 249 of my code.
+
+Basically we need to Explicitly dictate to the runtime environment that we want to "morph" into the correct class. You see that on line 227 this method accepts a List. The List contains type Staff. These being instances of the staff class. Becuase we have used inheritance it actually contains Manager and Admin instances which are children of the Staff class. C# allows us to simply declare the List as Staff. However it does not implicitly know at runtime that the list actually contains Manager and Admin instances.
+
+This is why its important to know. If we do not Explictly notify the compiler and subsequently the runtime environment of this then an error will occur.
+
+Thats what this weird syntax on lines 245 and 249 are doing.
+
+Polymorphism...like animorphs for code but we its explicit! ... cough ... rough crowd.
 
 **Disclaimer** The following Sections are being included to demonstrate my knowledge. But there are no examples in my code.
 
