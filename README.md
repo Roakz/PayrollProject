@@ -91,6 +91,42 @@ most primitive datatypes except for string are value types. string along with mo
 
 <h3> Enums </h3>
 
+Enums are a special data type in C# that allow us to create a set list of constants that represent an underlying numerical type. The numerical type will be integer by default and will increment in 1's. You can see an example of an enum on line 219 of my code. I have an enum named Months of the year and have listed all months. Enums are of immutable value type. On line 236 the enums values are accessed based on the month supplied by the user.
+
+<h3> Fields </h3>
+
+Fields are generally declared at the top of our classes. Fields are Simply put just a variable that belong to a class or struct. You can see examples of this at the top of all of my declared classes. Have a look at lines 12-14 in the program class. I have declared 4 fields. myStaff of type List containing Staff, fr a FileReader object, month and year both integers.
+
+<h3> Properties </h3>
+
+Properties come in 2 forms. Manual and auto-implemented. If no further logic is required we can use an auto implemented property. If we need more fine grained control over the logic. Then we can use manual properties. Properties essentially define our getter and setter for fields within a class. We can set access control on our properties getters and setters aswell. If you look at line 85-102 you can see an example of a manual Property called HoursWorked which has a backer field called hWorked just above it. This was made manual so we could add some additional logic to the setter. An example of an auto implemented property is on line 104.
+
+<h3> Methods </h3>
+
+Methods in C# aren't disimilar to other laguages. You must have a method name followed by (). If there are paramters they are defined inside these brackets. If there isnt they are still required. We then use curly Boi's {} To define the scope that holds the logic. Methods are declared with an access modifier and a return value type or void. Line 114 in the code holds the start of the CalculatePay method. you will also notice the word virtual between the access modifier and the return type (in this case void). This allows the method to be overriden in child classes. 
+
+The static keyword can also be used to make member accessable on the class itself and not just the object created from it. For example => If the CalculatePay method was declared as below. Then we could use Staff.CalculatePay(); from anywnere in the code without creating an instance of the class.
+
+```C#
+public static void CalculatePay(){};
+```
+
+parameters should have there types declared aswell. i.e CalculatePay(int someNum, string expectedString){};.
+
+<h3> Iteration </h3>
+
+Iteration is not dissimilar to other languages in C# you cna view some examples of this in my code at lines 231(foreach), 189(while). Not much more to say here. It has the features you would expect. There are some keywords including break to stop iterating and continue to jump to the next iteration. C# also contains the stanard for loop. These features can be used for flow control etc.
+
+<h3> Exception Handling </h3>
+
+C# Gives us the try, catch, finally block to help with error handling. You can see an example of this in my code at lines 20-29. The catch block can set a variable to refer to the exception which can then be used to access its message. Although i didnt in my code. You can also create your own exceptions and catch particular exceptions. You can also have more than one catch block defines to perform differnt scenarios based on the exception type. The finally block will ececute regardless of if the catch was used or not.
+
+<h3> LINQ </h3>
+
+LINQ stands for Language-Integrated Query. It is a syntax provided that allows us to query data in our program. I have provided an example of this in my code on line 263. It has an SQL...ish like syntax for ease of querying and arranging data. In my code you can see that it can be assigned to a variable and formatted in a certain way. We can then manipulate this data to our liking i.e line 272-276.
+
+
+
 <a name="install"/>
 <h2>Install</h2>
 
