@@ -41,7 +41,6 @@ Demonstrated Principles
 - Interfaces
 - Abstract Classes
 - structs
-- Switches
 - Multithreading and Async
 - All the other things
 
@@ -169,16 +168,32 @@ This is why its important to know. If we do not Explictly notify the compiler an
 
 Thats what this weird syntax on lines 245 and 249 are doing.
 
-Polymorphism...like animorphs for code but we its explicit! ... cough ... rough crowd.
+Polymorphism...like animorphs for code but it's explicit! ... cough ... rough crowd.
 
 **Disclaimer** The following Sections are being included to demonstrate my knowledge. But there are no examples in my code.
 
 <h3> Interfaces </h3>
+
+An interface is a completely "abstract class", which can only contain abstract methods and properties (with empty bodies). Thanks W3 schools!
+Basicaly an interface is a set of rules or a dictionary/blue print that a class van implement and should adhere to.
+
 <h3> Abstract Classes </h3>
+Abstract classes are a special type of class that is created for other classes to inherit. You cannot instantiate an abstract class by creating an instance if it. Abstract classes also cannot have static members. Abstract methods can be contained within the class and must be implemented in any inheriting class. No vody is contained in the method though. The main difference between this an in interface is that you can have functionality in here that can be inheritied or overriden by inheriting classes making interfaces more conceptual. An interface is not Inherited it is implemented.
+
 <h3> Structs </h3>
-<h3> Switches </h3>
+
+Structs are almost identical to classes in that they can contain fields, properties and methods. However they cannot be inherited. Structs are also stored as a value type rather than a reference type. There are certain use cases where a struct is miore appropriate than a class. classes are generally the way to go but the microsoft docs here explain when a struct would be preferable. [Link to docs](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines/choosing-between-class-and-struct)
+
 <h3> Multithreading and Async </h3>
+Although not implemented in this very simple code example. C# does have support for both multithreading and for Asynchronous programming. There are classes that manage this and this can be easily found in the microsoft docs.
+
 <h3> All the other things </h3>
+
+This was a fantastic Learning Venture and I have thoroughly enjoyed consolidating what I have learnt by typing this up. The microsoft Documentation seems very thorough and is accessable here => [DOCS YEET](https://docs.microsoft.com/en-us/dotnet/csharp/)
+
+This covers nost of the basic concpets and ois a great little intro into C#.
+
+Happy coding!!
 
 <a name="install"/>
 <h2>Install</h2>
