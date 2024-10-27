@@ -59,7 +59,7 @@ Namespaces are just a grouping of related code elements. This could include clas
 
 <h3> Data types & Casting. </h3>
 
-C# has several data types that we can use, including all the usual culprits. Integers, Floats, Doubles, Decimals, Booleans ... the list Goes on. In C# we must declare the data type of a variable when we declare it. C# is very strict on datatypes and it generally wont implicitly type cast your variables or make assumptions about what you mean. This is said to help avoid unwanted errors down the track. The compiler will want to know what you mean specifically. 
+C# has several data types that we can use, including all the usual culprits. Integers, Floats, Doubles, Decimals, Booleans ... the list Goes on. In C# we must declare the data type of a variable when we declare it. C# is very strict on data types and it generally wont implicitly type cast your variables or make assumptions about what you mean. This is said to help avoid unwanted errors down the track. The compiler will want to know what you mean specifically. 
 
 For example if we look at line 23 of my code. We can see that I am using a type casting method:
 
