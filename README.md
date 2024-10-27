@@ -55,7 +55,7 @@ Directives for this program can be seen on lines 1-4. Directives tell the compil
 
 <h3> Namespaces </h3>
 
-Namespaces are just a grouping of related code elements. This could include classes, interfaces, methods etc.  C# has a heap (no pun intended) of Namespaces already defined for us that we can use. For example the infamous and commonly used System Namespace, as seen on line 1, gives us methods that we can use to interact with users. For example on line 18 the WriteLine method allows us to print messages to the screen. On line line 23 we use ReadLine to accept user input. These methods are defined within the System Namespace. The reason our program knows about them and how to use them is because we have used the Directuve on line 1 to tell the compiler about the system namespace.
+Namespaces are just a grouping of related code elements. This could include classes, interfaces, methods etc.  C# has a heap (no pun intended) of Namespaces already defined for us that we can use. For example the infamous and commonly used System Namespace, as seen on line 1, gives us methods that we can use to interact with users. For example on line 18 the WriteLine method allows us to print messages to the screen. On line line 23 we use ReadLine to accept user input. These methods are defined within the System Namespace. The reason our program knows about them and how to use them is because we have used the Directive on line 1 to tell the compiler about the system namespace.
 
 <h3> Data types & Casting. </h3>
 
