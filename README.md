@@ -188,8 +188,8 @@ Although not implemented in this very simple code example. C# does have support 
 
 <h3> All the other things </h3>
 
-This was a fantastic Learning Venture and I have thoroughly enjoyed consolidating what I have learnt by typing this up. The microsoft Documentation seems very thorough and is accessable here => [DOCS YEET](https://docs.microsoft.com/en-us/dotnet/csharp/)
+This was a fantastic Learning Venture and I have thoroughly enjoyed consolidating what I have learnt by typing this up. The microsoft documentation seems very thorough and is accessable here => [DOCS YEET](https://docs.microsoft.com/en-us/dotnet/csharp/)
 
-This covers nost of the basic concpets and ois a great little intro into C#.
+This covers most of the basic concepts and is a great little intro into C#.
 
 Happy coding!!
